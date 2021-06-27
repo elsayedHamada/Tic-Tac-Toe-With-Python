@@ -1,3 +1,4 @@
+import random
 board = [" " for x in range(10)]
 
 
@@ -58,7 +59,37 @@ def player_move():
 
 
 def comp_move():
-    pass
+    possible_moves = [x for x, letter in enumerate(board) if letter == " " and x != 0]
+    move = 0
+    for let in ["O", "X"]:
+        for i in possible_moves:
+            board_copy = board[:]
+            board_copy[i] = let
+            if is_winner(board_copy, let):
+                move = i
+                return move
+    open_corners = []
+    for i in possible_moves:
+        if i in [1, 3, 7, 9]:
+            open_corners.append(i)
+    if len(open_corners) > 0:
+        move = select_random(open_corners)
+    if 5 in possible_moves:
+        move = 5
+        return move
+    open_edges = []
+    for i in possible_moves:
+        if i in [2, 4, 8, 6]:
+            open_edges.append(i)
+    if len(open_edges) > 0:
+        move = select_random(open_edges)
+    return move
+
+
+def select_random(list):
+    ln = len(list)
+    ran = random.randrange(0, ln)
+    return list[ran]
 
 
 def main():
