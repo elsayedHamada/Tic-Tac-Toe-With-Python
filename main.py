@@ -52,7 +52,7 @@ def player_move():
                 else:
                     print("This Place Is Already Full.")
             else:
-                print("please, Choose Number btween 1-9 ok.")
+                print("please, Choose Number between 1-9 ok.")
         except:
             print("You Should Give Number nothing else ok.")
 
