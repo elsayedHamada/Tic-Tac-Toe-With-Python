@@ -32,3 +32,30 @@ def is_winner(board, letter):
            (board[3] == letter and board[6] == letter and board[9] == letter))
 
 
+def player_move():
+    pass
+
+
+def is_full(board):
+    if board.count(" ") > 1:
+        return False
+    else:
+        return True
+
+
+def main():
+    print("Hi Dude Welcome To Tic Tac Toe Game Let's Get Started!👍")
+    print_board(board)
+    while not (is_full(board)):
+        if not(is_winner(board, "O")):
+            player_move()
+            print_board(board)
+        else:
+            print("Sorry, The Comp(O) Have Won The Game :(")
+            break
+        if not (is_winner(board, "O")):
+            player_move()
+            print_board(board)
+        else:
+            print("Hiiiii, You Have Won The Game :)")
+            break
