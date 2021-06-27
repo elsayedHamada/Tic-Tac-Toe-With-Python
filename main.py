@@ -40,7 +40,21 @@ def is_full(board):
 
 
 def player_move():
-    pass
+    run = True
+    while run:
+        move = input("Please, Enter Your Move And It Should Be Between 1-9 Ok! >>")
+        try:
+            move = int(move)
+            if 0 < move < 10:
+                if is_free(move):
+                    run = False
+                    insert_letter("X", move)
+                else:
+                    print("This Place Is Already Full.")
+            else:
+                print("please, Choose Number btween 1-9 ok.")
+        except:
+            print("You Should Give Number nothing else ok.")
 
 
 def comp_move():
@@ -70,5 +84,6 @@ def main():
             break
         if is_full(board):
             print("End.")
+
 
 main()
