@@ -1,15 +1,18 @@
+# Needed moudels
 import random
 board = [" " for x in range(10)]
 
-
+# insert
 def insert_letter(letter, position):
     board[position] = letter
 
 
+# Check Free
 def is_free(pos):
     return board[pos] == " "
 
 
+# Board
 def print_board(board):
     print("   |   |   ")
     print(" " + board[1] + " | " + board[2] + " | " + board[3])
@@ -24,6 +27,7 @@ def print_board(board):
     print("   |   |   ")
 
 
+# Check Winner
 def is_winner(board, letter):
     return((board[1] == letter and board[2] == letter and board[3] == letter) or
            (board[4] == letter and board[5] == letter and board[6] == letter) or
@@ -33,6 +37,7 @@ def is_winner(board, letter):
            (board[3] == letter and board[6] == letter and board[9] == letter))
 
 
+# Full Board
 def is_full(board):
     if board.count(" ") > 1:
         return False
@@ -40,6 +45,7 @@ def is_full(board):
         return True
 
 
+# Check Player Move
 def player_move():
     run = True
     while run:
@@ -58,6 +64,7 @@ def player_move():
             print("You Should Give Number nothing else ok.")
 
 
+# Computer Move
 def comp_move():
     possible_moves = [x for x, letter in enumerate(board) if letter == " " and x != 0]
     move = 0
@@ -86,12 +93,14 @@ def comp_move():
     return move
 
 
+# Random Pos
 def select_random(list):
     ln = len(list)
     ran = random.randrange(0, ln)
     return list[ran]
 
 
+# Main
 def main():
     print("Hi Dude Welcome To Tic Tac Toe Game Let's Get Started!👍")
     print_board(board)
